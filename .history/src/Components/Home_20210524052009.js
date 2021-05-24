@@ -26,7 +26,7 @@ const Home = () => {
         </div>
       </div>
       <div className="mx-auto my-2">
-        <BadgeCheckIcon className="h-10 text-blue-700 w-22" />
+        <BadgeCheckIcon className="h-10 text-indigo-700 w-22" />
       </div>
       <div className="flex flex-col mx-auto space-y-2">
         <button type="button" className="btn-large" onClick={logoutlisntner}>
