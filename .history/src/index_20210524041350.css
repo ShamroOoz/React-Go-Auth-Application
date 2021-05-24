@@ -3,6 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .btn-action {
   @apply block px-4 py-2 mt-4 ml-2 text-lg font-bold text-blue-700 rounded hover:text-white hover:bg-blue-700 md:mt-0;
 }

@@ -1,0 +1,6 @@
+import Home from "./Home";
+import Login from "./Login";
+import Singup from "./Singup";
+import Singup from "./Singup";
+
+export { Home, Login, Singup };

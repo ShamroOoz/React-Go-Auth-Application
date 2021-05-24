@@ -1,15 +1,14 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Home, Login, Singup, Navbar } from "./Components";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {} from "./"
 function App() {
   return (
     <Router>
-      <Navbar />
       <Switch>
         <Route path="/singup">
-          <Singup />
+          <About />
         </Route>
         <Route path="/login">
-          <Login />
+          <Users />
         </Route>
         <Route exact path="/">
           <Home />
