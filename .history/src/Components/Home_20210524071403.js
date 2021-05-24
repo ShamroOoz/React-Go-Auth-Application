@@ -4,7 +4,7 @@ import { useAuth } from "../Context/Globalcontext.js";
 import { useHistory } from "react-router-dom";
 
 const Home = () => {
-  const { signout, user } = useAuth();
+  const { signout } = useAuth();
   const history = useHistory();
 
   const logoutlisntner = async () => {
@@ -20,7 +20,7 @@ const Home = () => {
       <div className="relative flex flex-col py-3 sm:max-w-xl sm:mx-auto">
         <div className="p-3 mx-auto">
           <span className="text-2xl font-bold text-blue-700 uppercase ">
-            {user.name}
+            User
           </span>
         </div>
         <div className="border border-blue-700 shadow w-30 h-30 rounded-3xl">
@@ -30,7 +30,9 @@ const Home = () => {
           />
         </div>
         <div className="mx-auto mt-2">
-          <p className="font-mono text-blue-700 uppercase">{user.email}</p>
+          <p className="font-mono text-blue-700 uppercase">
+            shamrozwarraich@gmail.com
+          </p>
         </div>
       </div>
       <div className="mx-auto my-2">

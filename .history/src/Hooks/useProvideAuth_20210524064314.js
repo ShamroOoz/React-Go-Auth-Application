@@ -5,45 +5,31 @@ const API = axios.create({ baseURL: "http://localhost:4000" });
 
 export const useProvideAuth = () => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchMyAPI() {
       try {
-        let { data } = await API.get("/api/user", {
-          withCredentials: true,
-        });
-        if (data) {
-          setUser(data);
-          setLoading(false);
-        }
+        let { data } = await API.get("/api/user");
+        setUser(data);
       } catch (error) {
-        setLoading(false);
         console.log(error.response.data);
       }
     }
     fetchMyAPI();
   }, []);
 
-  const me = (data) => API.get("/api/user");
-
   const signup = async (formdata) => {
     try {
-      const { data } = await API.post("/api/register", formdata, {
-        withCredentials: true,
-      });
-      if (data) {
-        return setUser(data.user);
-      }
+      const { data } = await API.post("/api/register", formdata);
+      console.log(data);
+      return setUser(data.user);
     } catch (error) {
       console.log(error.response.data);
     }
   };
   const signin = async (formdata) => {
     try {
-      const { data } = await API.post("/api/login", formdata, {
-        withCredentials: true,
-      });
+      const { data } = await API.post("/api/login", formdata);
       if (data) {
         return setUser(data.user);
       }
@@ -52,11 +38,11 @@ export const useProvideAuth = () => {
     }
   };
 
+  const me = (data) => API.get("/api/user");
+
   const signout = async () => {
     try {
-      const { data } = await API.get("/api/logout", {
-        withCredentials: true,
-      });
+      const { data } = await API.get("/api/logout");
       if (data) {
         return setUser(null);
       }
@@ -68,7 +54,6 @@ export const useProvideAuth = () => {
   // Return the user object and auth methods
   return {
     user,
-    loading,
     signin,
     signup,
     signout,

@@ -9,13 +9,10 @@ const Singup = () => {
   const { signup } = useAuth();
 
   const onSubmit = async (values, onSubmitProps) => {
-    try {
-      await signup(values);
-      onSubmitProps.setSubmitting(false);
-      onSubmitProps.resetForm();
-    } catch (error) {
-      console.log("Something wrong in Submit function in Singup");
-    }
+    // const { data } = await signup(values);
+    signup(values);
+    onSubmitProps.setSubmitting(false);
+    onSubmitProps.resetForm();
   };
 
   return (

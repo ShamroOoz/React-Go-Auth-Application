@@ -5,18 +5,15 @@ import { SingupSchema, initialSingupValues } from "./Schema";
 import { Link } from "react-router-dom";
 import { useAuth } from "../Context/Globalcontext.js";
 
-const Singup = () => {
-  const { signup } = useAuth();
+const onSubmit = (values, onSubmitProps) => {
+  //  auth.signup(values);
+  console.log(values);
+  onSubmitProps.setSubmitting(false);
+  onSubmitProps.resetForm();
+};
 
-  const onSubmit = async (values, onSubmitProps) => {
-    try {
-      await signup(values);
-      onSubmitProps.setSubmitting(false);
-      onSubmitProps.resetForm();
-    } catch (error) {
-      console.log("Something wrong in Submit function in Singup");
-    }
-  };
+const Singup = () => {
+  const auth = useAuth();
 
   return (
     <div className="container max-w-full px-6 mx-auto">

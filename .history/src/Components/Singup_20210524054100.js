@@ -8,14 +8,10 @@ import { useAuth } from "../Context/Globalcontext.js";
 const Singup = () => {
   const { signup } = useAuth();
 
-  const onSubmit = async (values, onSubmitProps) => {
-    try {
-      await signup(values);
-      onSubmitProps.setSubmitting(false);
-      onSubmitProps.resetForm();
-    } catch (error) {
-      console.log("Something wrong in Submit function in Singup");
-    }
+  const onSubmit = (values, onSubmitProps) => {
+    signup(values);
+    onSubmitProps.setSubmitting(false);
+    onSubmitProps.resetForm();
   };
 
   return (

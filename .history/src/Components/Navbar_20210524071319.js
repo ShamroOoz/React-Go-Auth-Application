@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { FireIcon, MenuIcon, SearchIcon } from "@heroicons/react/outline";
 import { useAuth } from "../Context/Globalcontext.js";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Navbar = () => {
   const [togglemenu, settogglemenu] = useState(false);
   const [isAuth, setisAuth] = useState(false);
   const { signout, user } = useAuth();
   const history = useHistory();
-
   useEffect(() => {
     if (user) {
       setisAuth(true);
@@ -19,7 +19,6 @@ const Navbar = () => {
   const logoutlisntner = async () => {
     try {
       await signout();
-      history.push("/login");
     } catch (error) {
       console.log("Something wrong in logout function in Home", error);
     }

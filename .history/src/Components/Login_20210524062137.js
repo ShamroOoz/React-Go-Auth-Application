@@ -1,21 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Formik, Form } from "formik";
 import FormikControl from "./FormikControl";
-import { SingupSchema, initialSingupValues } from "./Schema";
-import { Link } from "react-router-dom";
+import { SignInSchema, initialSignInValues } from "./Schema";
 import { useAuth } from "../Context/Globalcontext.js";
 
-const Singup = () => {
-  const { signup } = useAuth();
+const Login = () => {
+  const { signin } = useAuth();
 
-  const onSubmit = async (values, onSubmitProps) => {
-    try {
-      await signup(values);
-      onSubmitProps.setSubmitting(false);
-      onSubmitProps.resetForm();
-    } catch (error) {
-      console.log("Something wrong in Submit function in Singup");
-    }
+  const onSubmit = (values, onSubmitProps) => {
+    signin(values);
+    onSubmitProps.setSubmitting(false);
+    onSubmitProps.resetForm();
   };
 
   return (
@@ -25,11 +21,11 @@ const Singup = () => {
           <div className="relative w-full">
             <div className="mt-4">
               <div className="text-3xl font-bold text-center text-blue-700">
-                Create Account
+                Welcome
               </div>
               <Formik
-                initialValues={initialSingupValues}
-                validationSchema={SingupSchema}
+                initialValues={initialSignInValues}
+                validationSchema={SignInSchema}
                 onSubmit={onSubmit}
               >
                 {(formik) => (
@@ -44,23 +40,9 @@ const Singup = () => {
 
                       <FormikControl
                         control="input"
-                        type={`text`}
-                        name="name"
-                        label={`Name`}
-                      />
-
-                      <FormikControl
-                        control="input"
                         type={`password`}
                         name="password"
                         label={`Password`}
-                      />
-
-                      <FormikControl
-                        control="input"
-                        type={`password`}
-                        name="confirmPassword"
-                        label={`Confirm Password`}
                       />
 
                       <button
@@ -68,16 +50,16 @@ const Singup = () => {
                         className="btn-large"
                         disabled={!formik.isValid}
                       >
-                        Singup
+                        Login
                       </button>
                     </div>
                   </Form>
                 )}
               </Formik>
               <div className="mt-4 text-center text-gray-400 hover:text-gray-600">
-                Already have an account?
-                <Link to="/login">
-                  <span className="underline"> Log in</span>
+                Don’t have an account yet?
+                <Link to="/singup">
+                  <span className="underline"> Sign up</span>
                 </Link>
               </div>
             </div>
@@ -88,4 +70,4 @@ const Singup = () => {
   );
 };
 
-export default Singup;
+export default Login;

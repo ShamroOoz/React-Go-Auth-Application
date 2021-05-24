@@ -6,6 +6,7 @@ export function ProvideAuth({ children }) {
   const auth = useProvideAuth();
   return (
     <authContext.Provider value={auth}>
+      {" "}
       {!auth.loading && children}
     </authContext.Provider>
   );

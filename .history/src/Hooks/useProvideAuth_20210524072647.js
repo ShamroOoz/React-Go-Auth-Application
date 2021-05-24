@@ -18,7 +18,6 @@ export const useProvideAuth = () => {
           setLoading(false);
         }
       } catch (error) {
-        setLoading(false);
         console.log(error.response.data);
       }
     }

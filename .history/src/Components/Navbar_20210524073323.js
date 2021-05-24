@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FireIcon, MenuIcon, SearchIcon } from "@heroicons/react/outline";
 import { useAuth } from "../Context/Globalcontext.js";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [togglemenu, settogglemenu] = useState(false);
